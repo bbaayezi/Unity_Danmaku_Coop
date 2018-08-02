@@ -10,11 +10,12 @@ namespace Project.Standard.Abstract
 		private int _life = 3;
 		private int _bombs = 2;
 		private bool _isAlive = true;
+		private int _playerLevel = 0;
 		// Attributes
 		public int Life
 		{
 			get { return _life; }
-			set{ _life = value; }
+			set { _life = value; }
 		}
 
 		public int Bombs
@@ -26,6 +27,11 @@ namespace Project.Standard.Abstract
 		{
 			get { return _isAlive; }
 			set { _isAlive = value; }
+		}
+		public int PlayerLevel
+		{
+			get { return _playerLevel; }
+			set { _playerLevel = value; }
 		}
 	}
 }
