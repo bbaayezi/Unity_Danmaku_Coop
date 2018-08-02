@@ -11,13 +11,16 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 	private GameObject m_SlowEff;
 	private float m_HorInput;
 	private float m_VerInput;
-	private float m_MoveSpeed = 2.5f;
+	private float m_MoveSpeed = 2.3f;
+	private int m_Bombs = 2;
+	private GameObject[] m_Otaku;
 	// Use this for initialization
 	void Start () 
 	{
 		// get the player object
 		m_Player = GameObject.FindGameObjectWithTag("Player0");
 		m_SlowEff = GameObject.FindGameObjectWithTag("SlowEffect");
+		m_Otaku = GameObject.FindGameObjectsWithTag("Otaku");
 
 		anim = GameObject.FindObjectOfType<Animator>();
 		Debug.Log(m_Player);
@@ -37,17 +40,19 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 		m_HorInput = Input.GetAxis("Horizontal");
 		m_VerInput = Input.GetAxis("Vertical");
 
+		RotateOtaku();
+
 		Vector3 movement = Vector3.zero;
 
 		if (Input.GetKey(KeyCode.LeftShift))
 		{
-			m_MoveSpeed = 1.2f;
+			m_MoveSpeed = 1.1f;
 			m_SlowEff.GetComponent<SpriteRenderer>().enabled = true;
 			RotateSlowEff();
 		}
 		else
 		{
-			m_MoveSpeed = 2.5f;
+			m_MoveSpeed = 2.3f;
 			m_SlowEff.GetComponent<SpriteRenderer>().enabled = false;
 		}
 
@@ -79,6 +84,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 		}
 		else
 		{
+			m_MoveSpeed /= 1.414f;
 			if (m_HorInput > 0.1f && m_VerInput > 0.1f)
 			{
 				ResetAnimator();
@@ -115,6 +121,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 		m_Player.transform.position += movement;
 	}
 
+	// Deprecated
 	public void ApplyShoot()
 	{
 
@@ -122,7 +129,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 
 	public bool UseBomb()
 	{
-		return true;
+		return m_Bombs == 0 ? false : true;
 	}
 
 	public void SwitchToLowSpeed()
@@ -139,7 +146,20 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 
 	private void RotateSlowEff()
 	{
-		m_SlowEff.transform.rotation *= Quaternion.Euler(0, 0, -2f);
+		m_SlowEff.transform.rotation *= Quaternion.Euler(0, 0, -1.5f);
+	}
+
+	private void RotateOtaku()
+	{
+		foreach(GameObject o in m_Otaku)
+		{
+			o.transform.rotation *= Quaternion.Euler(0, 0, -4f);
+		}
+	}
+
+	private void FocusOtaku()
+	{
+
 	}
 	
 }

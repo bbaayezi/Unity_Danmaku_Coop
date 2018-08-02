@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Project.Standard.Interface
 {
@@ -10,7 +11,7 @@ namespace Project.Standard.Interface
 		// First thing is to shoot
 		// Updates every frame
 		/// <param name="shootingSpeed">Determin the bullet speed</param>
-		void Shoot(float shootingSpeed);
+		void Shoot(GameObject newBullet);
 
 		// Next it is necessary to clear the bullets
 		// Usually when off screen
