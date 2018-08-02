@@ -9,7 +9,7 @@ namespace Project.Standard.Interface
 		// After the bullet have spawned
 		// First thing is to shoot
 		// Updates every frame
-		// @params float shootingSpeed
+		/// <param name="shootingSpeed">Determin the bullet speed</param>
 		void Shoot(float shootingSpeed);
 
 		// Next it is necessary to clear the bullets
