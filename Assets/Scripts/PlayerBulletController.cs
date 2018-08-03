@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Project.Standard.Interface;
 using System.Threading;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerBulletController : MonoBehaviour, IBulletControl
@@ -36,10 +35,10 @@ public class PlayerBulletController : MonoBehaviour, IBulletControl
 
 	public void Shoot(GameObject newBullet)
 	{
-		Debug.Log("Shooting!");
-		// Task.Run()
-		// shoot the bullet
-		newBullet.GetComponent<Rigidbody2D>().velocity = Vector2.up * 40;
+		// Debug.Log("Shooting!");
+		// // Task.Run()
+		// // shoot the bullet
+		// newBullet.GetComponent<Rigidbody2D>().velocity = Vector2.up * 40;
 	}
 
 	public void ClearBullets()

@@ -9,6 +9,8 @@ TagManager:
   - Otaku
   - SelfBullets
   - UpperBound
+  - EnemyBullet
+  - EnemyPath
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - 
   - Bullet
   - Player
-  - 
-  - 
+  - Enemy
+  - EnemyBullet
   - 
   - 
   - 

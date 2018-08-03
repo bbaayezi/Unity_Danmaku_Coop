@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Project.Standard.Interface;
 using UnityEngine;
 
-public class UpperBound : MonoBehaviour 
+public class EnemyController : MonoBehaviour, IEnemyControl 
 {
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -17,12 +17,10 @@ public class UpperBound : MonoBehaviour
 		
 	}
 
-	private void OnCollisionEnter2D(Collision2D other) 
+	public void DoMotionClip()
 	{
-		// Debug.Log("Collision!");
-		if (other.transform.tag == "SelfBullets")
-		{
-			Destroy(other.gameObject);
-		}	
+		
 	}
+
+	
 }

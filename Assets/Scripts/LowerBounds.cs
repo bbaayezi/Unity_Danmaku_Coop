@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpperBound : MonoBehaviour 
+public class LowerBounds : MonoBehaviour 
 {
 
 	// Use this for initialization
@@ -19,10 +19,10 @@ public class UpperBound : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D other) 
 	{
-		// Debug.Log("Collision!");
-		if (other.transform.tag == "SelfBullets")
+		if (other.transform.tag == "EnemyBullet")
 		{
 			Destroy(other.gameObject);
-		}	
+		}
 	}
+	
 }

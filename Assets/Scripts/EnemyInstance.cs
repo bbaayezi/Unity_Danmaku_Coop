@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpperBound : MonoBehaviour 
-{
+public class EnemyInstance : MonoBehaviour {
 
 	// Use this for initialization
+	private int life = 15;
+	public GameObject Path;
 	void Start () 
 	{
 		
@@ -19,10 +20,14 @@ public class UpperBound : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D other) 
 	{
-		// Debug.Log("Collision!");
-		if (other.transform.tag == "SelfBullets")
+		Debug.Log("Enemy being hit!");
+		life--;
+		if (life < 0)
 		{
-			Destroy(other.gameObject);
-		}	
+			Destroy(gameObject);
+			Destroy(Path.gameObject);
+		}
+
 	}
+
 }

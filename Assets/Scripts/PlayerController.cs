@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 	private GameObject m_SlowEff;
 	private float m_HorInput;
 	private float m_VerInput;
-	private float m_MoveSpeed = 2.3f;
+	private float m_MoveSpeed = 2.4f;
 	private int m_Bombs = 2;
 	private GameObject[] m_Otaku;
 	// Use this for initialization
@@ -21,9 +21,8 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 		m_Player = GameObject.FindGameObjectWithTag("Player0");
 		m_SlowEff = GameObject.FindGameObjectWithTag("SlowEffect");
 		m_Otaku = GameObject.FindGameObjectsWithTag("Otaku");
-
-		anim = GameObject.FindObjectOfType<Animator>();
-		Debug.Log(m_Player);
+		anim = GetComponentInParent<Animator>();
+		
 	}
 	
 	// use FixedUpdate for kinemic
@@ -46,13 +45,13 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 
 		if (Input.GetKey(KeyCode.LeftShift))
 		{
-			m_MoveSpeed = 1.1f;
+			m_MoveSpeed = 1.2f;
 			m_SlowEff.GetComponent<SpriteRenderer>().enabled = true;
 			RotateSlowEff();
 		}
 		else
 		{
-			m_MoveSpeed = 2.3f;
+			m_MoveSpeed = 2.4f;
 			m_SlowEff.GetComponent<SpriteRenderer>().enabled = false;
 		}
 
@@ -60,22 +59,28 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 		{
 			if (m_HorInput < -.1f)
 			{
-				ResetAnimator();
-				anim.SetBool("MoveLeft", true);
+				if (anim != null)
+				{
+					ResetAnimator();
+					anim.SetBool("MoveLeft", true);
+				}	
 				movement = m_MoveSpeed * Time.fixedDeltaTime * -Vector3.right;
 			}
 				
 			else if (m_HorInput > .1f)
 			{
-				ResetAnimator();
-				anim.SetBool("MoveRight", true);
+				if (anim != null)
+				{
+					ResetAnimator();
+					anim.SetBool("MoveRight", true);
+				}
 				movement = m_MoveSpeed * Time.fixedDeltaTime * Vector3.right;
 			}
 				
 		}
 		else if (m_HorInput < .1f && m_HorInput > -.1f)
 		{
-			ResetAnimator();
+			if (anim != null) ResetAnimator();
 			if (m_VerInput <-.1f)
 				movement = m_MoveSpeed * Time.fixedDeltaTime * -Vector3.up;
 			else if (m_VerInput > .1f)
@@ -87,32 +92,44 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 			m_MoveSpeed /= 1.414f;
 			if (m_HorInput > 0.1f && m_VerInput > 0.1f)
 			{
-				ResetAnimator();
-				anim.SetBool("MoveRight", true);
+				if (anim != null)
+				{
+					ResetAnimator();
+					anim.SetBool("MoveRight", true);
+				}	
 				movement = (transform.right + transform.up) * m_MoveSpeed * Time.fixedDeltaTime;
 			}
 			else if (m_HorInput > 0.1f && m_VerInput < -0.1f)
 			{
-				ResetAnimator();
-				anim.SetBool("MoveRight", true);
+				if (anim != null)
+				{
+					ResetAnimator();
+					anim.SetBool("MoveRight", true);
+				}	
 				movement = (transform.right - transform.up) * m_MoveSpeed * Time.fixedDeltaTime;
 			}
 			else if (m_HorInput < -0.1f && m_VerInput > 0.1f)
 			{
-				ResetAnimator();
-				anim.SetBool("MoveLeft", true);
+				if (anim != null)
+				{
+					ResetAnimator();
+					anim.SetBool("MoveLeft", true);
+				}	
 				movement = (transform.up - transform.right) * m_MoveSpeed * Time.fixedDeltaTime;
 			}
 			else if (m_HorInput < -0.1f && m_VerInput < -0.1f)
 			{
-				ResetAnimator();
-				anim.SetBool("MoveLeft", true);
+				if (anim != null)
+				{
+					ResetAnimator();
+					anim.SetBool("MoveLeft", true);
+				}	
 				movement = (-transform.up - transform.right) * m_MoveSpeed * Time.fixedDeltaTime;
 			}
 		}
 
 		if (m_HorInput > -.1f && m_HorInput < .1f && m_VerInput > -.1f && m_VerInput < .1f)
-			ResetAnimator();
+			if (anim != null) ResetAnimator();
 		
 
 		// vertical offset
@@ -146,7 +163,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 
 	private void RotateSlowEff()
 	{
-		m_SlowEff.transform.rotation *= Quaternion.Euler(0, 0, -1.5f);
+		m_SlowEff.transform.rotation *= Quaternion.Euler(0, 0, -1.2f);
 	}
 
 	private void RotateOtaku()
