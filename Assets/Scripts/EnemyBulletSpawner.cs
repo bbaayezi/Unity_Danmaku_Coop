@@ -35,12 +35,12 @@ public class EnemyBulletSpawner : MonoBehaviour, ISpawnable
 
 	private void OnEnable() 
 	{
-		PathFollower.OnBulletSpawnPoint += SpawnBullet;
+		EnemyController.OnBulletSpawnPoint += SpawnBullet;
 	}
 
 	private void OnDisable() 
 	{
-		PathFollower.OnBulletSpawnPoint -= SpawnBullet;
+		EnemyController.OnBulletSpawnPoint -= SpawnBullet;
 	}
 
 	public void SpawnBullet()
