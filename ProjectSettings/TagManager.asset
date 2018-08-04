@@ -9,6 +9,8 @@ TagManager:
   - Otaku
   - SelfBullets
   - UpperBound
+  - BulletYellowSpread
+  - BulletYellowSpreadHolder
   layers:
   - Default
   - TransparentFX

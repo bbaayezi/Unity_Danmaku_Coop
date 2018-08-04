@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-namespace Project.Standard.Abstract
+﻿namespace Project.Standard.Abstract
 {
 	public abstract class Bullet
 	{

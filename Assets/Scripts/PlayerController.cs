@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 	private GameObject m_SlowEff;
 	private float m_HorInput;
 	private float m_VerInput;
-	private float m_MoveSpeed = 2.3f;
+	private float m_MoveSpeed = 1.9f;
 	private int m_Bombs = 2;
 	private GameObject[] m_Otaku;
 	// Use this for initialization
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 		m_Otaku = GameObject.FindGameObjectsWithTag("Otaku");
 
 		anim = GameObject.FindObjectOfType<Animator>();
-		Debug.Log(m_Player);
+		// Debug.Log(m_Player);
 	}
 	
 	// use FixedUpdate for kinemic
@@ -46,13 +46,13 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 
 		if (Input.GetKey(KeyCode.LeftShift))
 		{
-			m_MoveSpeed = 1.1f;
+			m_MoveSpeed = .8f;
 			m_SlowEff.GetComponent<SpriteRenderer>().enabled = true;
 			RotateSlowEff();
 		}
 		else
 		{
-			m_MoveSpeed = 2.3f;
+			m_MoveSpeed = 1.9f;
 			m_SlowEff.GetComponent<SpriteRenderer>().enabled = false;
 		}
 
