@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: cec172289acdf854d90d19662f308524
-timeCreated: 1533169538
-licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: enemy_0
@@ -1888,7 +1886,11 @@ TextureImporter:
       name: enemy_120
       rect:
         serializedVersion: 2
+<<<<<<< HEAD
         x: 32
+=======
+        x: 64
+>>>>>>> 0cd290ef963d441651eb769d13f4215a6ac47617
         y: 192
         width: 32
         height: 32
@@ -1902,7 +1904,7 @@ TextureImporter:
       name: enemy_121
       rect:
         serializedVersion: 2
-        x: 64
+        x: 32
         y: 192
         width: 32
         height: 32

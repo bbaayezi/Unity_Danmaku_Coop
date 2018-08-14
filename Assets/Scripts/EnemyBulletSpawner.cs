@@ -1,54 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Project.Standard.Interface;
 using UnityEngine;
 
-public class EnemyBulletSpawner : MonoBehaviour, ISpawnable 
+public class EnemyBulletSpawner : MonoBehaviour 
 {
 
-	public GameObject Bullet;
-	public GameObject Parent;
-	private bool spawnFlag = false;
-	private int frameCount = 0;
-	Vector3 bulletSpawnPosition;
+    public GameObject bulletGroup;
+    private SpriteRenderer[] bullets;
+    private Vector3 screenBorder;
+    public float bulletSpeed;
 	// Use this for initialization
 	void Start () 
-	{
-		
+    {
+		screenBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 5));
+        // Debug.Log(screenBorder);
+        // Debug.Log(bullets);
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () 
-	{
-		frameCount++;
-		if (spawnFlag && frameCount % 3 == 0)
-		{
-			GameObject bulletGroup = Instantiate(Bullet, bulletSpawnPosition, transform.rotation, transform);
-			foreach(Rigidbody2D bullet in bulletGroup.GetComponentsInChildren<Rigidbody2D>())
-			{
-				bullet.velocity = bullet.transform.TransformDirection(new Vector2(0, -1)) * 2;
-			}
-			spawnFlag = false;
-			frameCount = 0;
-		}
-	}
-
-	private void OnEnable() 
-	{
-		PathFollower.OnBulletSpawnPoint += SpawnBullet;
-	}
-
-	private void OnDisable() 
-	{
-		PathFollower.OnBulletSpawnPoint -= SpawnBullet;
-	}
-
-	public void SpawnBullet()
-	{
-		// Debug.Log("Spawn point reached!");
-		spawnFlag = true;
-		bulletSpawnPosition = Parent.transform.position;
-		// shoot the bullet
+    {
+        
+        bullets = bulletGroup.GetComponentsInChildren<SpriteRenderer>() as SpriteRenderer[];
+        // bullets[0].gameObject.transform.position -= Vector3.up * 1f * Time.fixedDeltaTime;
+        // Debug.Log(bullets[0]);
+        if (bullets != null)
+        {
+            foreach(SpriteRenderer bullet in bullets)
+            {
+                // Debug.Log(bullet);
+                bullet.gameObject.transform.Translate(-Vector3.up * bulletSpeed * Time.fixedDeltaTime, Space.Self);
+                // bullet.gameObject.transform.position -= Vector3.up * 1f * Time.fixedDeltaTime;
+                if ((bullet.gameObject.transform.position.y) <= screenBorder.y)
+                {
+                    Destroy(bullet.gameObject);
+                }
+            }
+        }
 		
 	}
 }
