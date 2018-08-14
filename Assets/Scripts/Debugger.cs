@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System;
 using UnityEngine;
+using UnityEditor;
 
 public class Debugger : MonoBehaviour 
 {
@@ -16,7 +17,7 @@ public class Debugger : MonoBehaviour
     public GameObject Parent;
 	void Start () 
     {
-        SpawnEnemy();
+        // SpawnEnemy();
         // SpawnBullet();
         // SpawnMediumEnemy();
 	}

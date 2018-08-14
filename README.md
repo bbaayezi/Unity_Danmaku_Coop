@@ -36,15 +36,21 @@ v0.0.1
 
 - 屏幕边界碰撞检测改为使用`Camera,ViewPortToScreenPoint()`方法，使用坐标进行判定，避免额外的碰撞机碰撞检测消耗。
 
-- 对于敌机的生成，使用统一的总控制器`EnemyMainController`，(在当前进行的项目中与`Debugger`中生成敌机的逻辑相同)。而敌机本身具有`SpawnBullet()`方法用于生成子弹预制体，子弹预制体的行动规则由`EnemyBulletSpawner`统一控制。
+- ~~对于敌机的生成，使用统一的总控制器`EnemyMainController`，(在当前进行的项目中与`Debugger`中生成敌机的逻辑相同)。而敌机本身具有`SpawnBullet()`方法用于生成子弹预制体，子弹预制体的行动规则由`EnemyBulletSpawner`统一控制。~~
+
+- 将敌机的运动轨迹控制以及子弹生成控制分离出来，每次创建敌机脚本时将会同时创建依赖脚本`EnemyMotionController`以及`EnemyBulletSpawner`
 
 - 创建`EnemySpawnPoints`用于定位敌机生成的世界坐标。
 
-- 创建`Bullets`统一管理子弹，在其之下分有单个子弹以及子弹群的holder，格式为`bullets_[color]_[type]_group_holder`，`bullet_[color]_[type]_single_holder`。以`bullets_yellow_spread_group_holder`为例，其子元素包含五个不同rotation的子弹，通过子弹控制器`EnemyBulletSpawner`中每帧进行的`foreach`方法遍历此holder中所有的子弹并为其设置运动机制（`Transform.Translate`）。注意为敌机绑定子弹时，需要指定子弹的holder以及如果子弹类型为spread的话，需要手动绑定**每一个不同rotation状态的子弹**，只有这样才能正确的在holder之下动态添加子弹组，并确保`EnemyBulletSpawner`正确遍历holder之下的子弹并为其添加运动机制。
+- 创建`Bullets`统一管理子弹，在其之下分有单个子弹以及子弹群的holder，格式为`bullets_[b_color]_[b_type]_group_holder`，`bullet_[b_color]_[b_type]_single_holder`。以`bullets_yellow_spread_group_holder`为例，其子元素包含五个不同rotation的子弹，通过子弹控制器`EnemyBulletController`中每帧进行的`foreach`方法遍历此holder中所有的子弹并为其设置运动机制（`Transform.Translate`）。注意为敌机绑定子弹时，需要指定子弹的holder以及如果子弹类型为spread的话，需要手动绑定**每一个不同rotation状态的子弹**，只有这样才能正确的在holder之下动态添加子弹组，并确保`EnemyBulletController`正确遍历holder之下的子弹并为其添加运动机制。
+
+- 为`EnemyMotionController`脚本添加可视自定义设置功能，简化运动轨迹设计流程。
 
   
 
+### 敌机预制件制作
 
+预制件制作的必要信息包括敌机类型，行动模式，子弹类型，以及必要的敌机自身属性（如血量等）。相关文档请前往Prefabs > Enemy文件夹中的README查看。
 
 
 

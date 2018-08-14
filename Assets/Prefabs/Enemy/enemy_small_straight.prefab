@@ -22,10 +22,11 @@ GameObject:
   - component: {fileID: 212506925895702630}
   - component: {fileID: 95410483653108222}
   - component: {fileID: 114949650362819828}
+  - component: {fileID: 114304626977835132}
   - component: {fileID: 58690818353314482}
   - component: {fileID: 50154254209791654}
   m_Layer: 0
-  m_Name: enemy_small
+  m_Name: enemy_small_straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1553543543953504}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 0.2, z: 0}
+  m_LocalPosition: {x: -1.5, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,6 +97,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114304626977835132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1553543543953504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f11136b41d602e48b124ce51808af67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114949650362819828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,7 +126,6 @@ MonoBehaviour:
   - {fileID: 1362713571149602, guid: 6e1f7139267128d4ab51ed9712d78a5b, type: 2}
   - {fileID: 1230170150054938, guid: 6e1f7139267128d4ab51ed9712d78a5b, type: 2}
   Speed: 0.6
-  TotalBulletSpawnTimes: 10
 --- !u!212 &212506925895702630
 SpriteRenderer:
   m_ObjectHideFlags: 1

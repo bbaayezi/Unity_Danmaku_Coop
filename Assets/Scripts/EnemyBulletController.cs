@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBulletSpawner : MonoBehaviour 
+public class EnemyBulletController : MonoBehaviour 
 {
 
-    public GameObject bulletGroup;
+    public GameObject BulletGroupHolder;
     private SpriteRenderer[] bullets;
     private Vector3 screenBorder;
     public float bulletSpeed;
@@ -21,7 +21,7 @@ public class EnemyBulletSpawner : MonoBehaviour
 	void FixedUpdate () 
     {
         
-        bullets = bulletGroup.GetComponentsInChildren<SpriteRenderer>() as SpriteRenderer[];
+        bullets = BulletGroupHolder.GetComponentsInChildren<SpriteRenderer>() as SpriteRenderer[];
         // bullets[0].gameObject.transform.position -= Vector3.up * 1f * Time.fixedDeltaTime;
         // Debug.Log(bullets[0]);
         if (bullets != null)

@@ -5,15 +5,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using System;
 
+[RequireComponent(typeof(EnemyMotionController))]
 public class EnemySmall : MonoBehaviour {
     public delegate void SpawnEvent(GameObject _this);
-    public static event SpawnEvent OnInstantiate;
     private GameObject BulletGroupHolder;
     public GameObject[] Bullets;
-    public float Speed;
-    public int TotalBulletSpawnTimes;
     private int frameCount;
     private int life = 15;
+
 	// Use this for initialization
 	void Start () 
     {
@@ -28,17 +27,11 @@ public class EnemySmall : MonoBehaviour {
     {
 		if (!(transform.localPosition.y <= -6.5)) // if reaches lower border, destroy itselft
         {
-            transform.Translate(-Vector3.up * Speed * Time.fixedDeltaTime, Space.Self);
             if (transform.localPosition.y <= -0.4f)
             {
                 SpawnBullet();
             }
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        
+        }    
 	}
 
     void SpawnBullet()
