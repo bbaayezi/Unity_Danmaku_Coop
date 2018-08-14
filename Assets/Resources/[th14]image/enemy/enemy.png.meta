@@ -1886,11 +1886,7 @@ TextureImporter:
       name: enemy_120
       rect:
         serializedVersion: 2
-<<<<<<< HEAD
-        x: 32
-=======
         x: 64
->>>>>>> 0cd290ef963d441651eb769d13f4215a6ac47617
         y: 192
         width: 32
         height: 32

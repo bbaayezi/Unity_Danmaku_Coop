@@ -19,7 +19,7 @@ public class UpperBound : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D other) 
 	{
-		// Debug.Log("Collision!");
+		Debug.Log("Collision!");
 		if (other.transform.tag == "SelfBullets")
 		{
 			Destroy(other.gameObject);

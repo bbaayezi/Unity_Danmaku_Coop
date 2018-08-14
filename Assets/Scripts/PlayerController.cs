@@ -60,28 +60,22 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 		{
 			if (m_HorInput < -.1f)
 			{
-				if (anim != null)
-				{
-					ResetAnimator();
-					anim.SetBool("MoveLeft", true);
-				}	
+				ResetAnimator();
+				anim.SetBool("MoveLeft", true);
 				movement = m_MoveSpeed * Time.fixedDeltaTime * -Vector3.right;
 			}
 				
 			else if (m_HorInput > .1f)
 			{
-				if (anim != null)
-				{
-					ResetAnimator();
-					anim.SetBool("MoveRight", true);
-				}
+				ResetAnimator();
+				anim.SetBool("MoveRight", true);
 				movement = m_MoveSpeed * Time.fixedDeltaTime * Vector3.right;
 			}
 				
 		}
 		else if (m_HorInput < .1f && m_HorInput > -.1f)
 		{
-			if (anim != null) ResetAnimator();
+			ResetAnimator();
 			if (m_VerInput <-.1f)
 				movement = m_MoveSpeed * Time.fixedDeltaTime * -Vector3.up;
 			else if (m_VerInput > .1f)
@@ -93,44 +87,32 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 			m_MoveSpeed /= 1.414f;
 			if (m_HorInput > 0.1f && m_VerInput > 0.1f)
 			{
-				if (anim != null)
-				{
-					ResetAnimator();
-					anim.SetBool("MoveRight", true);
-				}	
+				ResetAnimator();
+				anim.SetBool("MoveRight", true);
 				movement = (transform.right + transform.up) * m_MoveSpeed * Time.fixedDeltaTime;
 			}
 			else if (m_HorInput > 0.1f && m_VerInput < -0.1f)
 			{
-				if (anim != null)
-				{
-					ResetAnimator();
-					anim.SetBool("MoveRight", true);
-				}	
+				ResetAnimator();
+				anim.SetBool("MoveRight", true);
 				movement = (transform.right - transform.up) * m_MoveSpeed * Time.fixedDeltaTime;
 			}
 			else if (m_HorInput < -0.1f && m_VerInput > 0.1f)
 			{
-				if (anim != null)
-				{
-					ResetAnimator();
-					anim.SetBool("MoveLeft", true);
-				}	
+				ResetAnimator();
+				anim.SetBool("MoveLeft", true);
 				movement = (transform.up - transform.right) * m_MoveSpeed * Time.fixedDeltaTime;
 			}
 			else if (m_HorInput < -0.1f && m_VerInput < -0.1f)
 			{
-				if (anim != null)
-				{
-					ResetAnimator();
-					anim.SetBool("MoveLeft", true);
-				}	
+				ResetAnimator();
+				anim.SetBool("MoveLeft", true);
 				movement = (-transform.up - transform.right) * m_MoveSpeed * Time.fixedDeltaTime;
 			}
 		}
 
 		if (m_HorInput > -.1f && m_HorInput < .1f && m_VerInput > -.1f && m_VerInput < .1f)
-			if (anim != null) ResetAnimator();
+			ResetAnimator();
 		
 
 		// vertical offset
@@ -164,7 +146,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl
 
 	private void RotateSlowEff()
 	{
-		m_SlowEff.transform.rotation *= Quaternion.Euler(0, 0, -1.2f);
+		m_SlowEff.transform.rotation *= Quaternion.Euler(0, 0, -1.5f);
 	}
 
 	private void RotateOtaku()

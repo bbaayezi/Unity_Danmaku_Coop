@@ -43,13 +43,20 @@ public class PlayerBulletSpawner : MonoBehaviour, ISpawnable
 
 	public void SpawnBullet()
 	{
-		GameObject newBulletLeft = Instantiate(bullet, transform.position + new Vector3(0.15f, -0.3f, 0), Quaternion.Euler(0, 0, 90), transform);
-		GameObject newBulletRight = Instantiate(bullet, transform.position + new Vector3(-0.15f, -0.3f, 0), Quaternion.Euler(0, 0, 90), transform);
-		// Emit event
+		// right side bullet
 
-		newBulletLeft.GetComponent<Rigidbody2D>().velocity = Vector2.up * 35;
-		newBulletRight.GetComponent<Rigidbody2D>().velocity = Vector2.up * 35;
+		// note that the spawn point is absoulute point
+		// right bullet
+		GameObject newBulletLeft = Instantiate(bullet, transform.position + new Vector3(0.2f, -0.3f, 0), Quaternion.Euler(0, 0, 90), transform);
+		GameObject newBulletRight = Instantiate(bullet, transform.position + new Vector3(-0.2f, -0.3f, 0), Quaternion.Euler(0, 0, 90), transform);
+		// Emit event
+		// OnFinishedSpawn?.Invoke(newBulletLeft);
+		// OnFinishedSpawn?.Invoke(newBulletRight);
+		newBulletLeft.GetComponent<Rigidbody2D>().velocity = Vector2.up * 40;
+		newBulletRight.GetComponent<Rigidbody2D>().velocity = Vector2.up * 40;
 		// destroy
+
+		
 	}
 
 }
