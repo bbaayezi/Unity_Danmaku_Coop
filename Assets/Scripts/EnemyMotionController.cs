@@ -6,27 +6,22 @@ using UnityEditor;
 
 public class EnemyMotionController : MonoBehaviour 
 {
-	public struct Config
+	[Serializable]
+	public enum EMotionPresets
 	{
-		[Header("参考标准速度：0.6")]
-		public Vector2 Speed;
-		[Header("衰减速度(加速度)每秒衰减一次")]
-		public Vector2 FadeSpeed;
-		[Header("速度衰减限制(达到限制后速度不再衰减)")]
-		public Vector2 LimitFadeSpeed;
+		LinearUp,
+		LinearDown,
+		LinearLeft,
+		LinearRight
 	}
+	
 	private int frameCount;
+	public EnemyMotionCfg MotionClipsAssets;
 	[Header("是否使用预设值")]
 	// [HideInInspector]
 	public bool UsePresets;
-	[Header("预设值1：向下匀速运动")]
-	public bool Pre1;
-	[Header("预设值2：向右匀速运动")]
-	public bool Pre2;
-	[Header("预设值3：向左匀速运动")]
-	public bool Pre3;
-	[Header("预设值4：以屏幕中心为中点，开口向上抛物线运动")]
-	public bool Pre4;
+	[Header("预设值选择")]
+	public EMotionPresets Presets;
 	// [Header("参考标准速度：0.6")]
 	private Vector2 Speed;
 	// [Header("衰减速度(加速度)每秒衰减一次")]
@@ -37,38 +32,68 @@ public class EnemyMotionController : MonoBehaviour
 	ContextMenuItem("Auto Set Config", "AutoSet")]
 	public int MotionClips;
 	
-	public MotionConfigs[] MotionConfigs;
+	// public MotionConfigs[] MotionConfigs;
 
 	private GameObject Self;
 	private float _HorizontalSpeed;
 	private float _VerticalSpeed;
-
+	private static EnemyMotionCfg Cfg;
+	private MotionConfig[] Configs;
+	private int ClipCount = 0;
+	private int AwaitFrameCount;
+	private bool WaitForNextCLip = false;
 	// Use this for initialization
 	void Start () 
 	{
 		Self = transform.gameObject;
+		// string path = $"{Application.dataPath}/Scripts/Utils/EnemyMotionPreset1.asset";
+		
+		// Debug.Log(Cfg.Speed);
 		if (UsePresets)
 		{
-			if (Pre1)
+			// if (Pre1)
+			// {
+			// 	_HorizontalSpeed = 0;
+			// 	_VerticalSpeed = -.6f;
+			// }
+			// else if (Pre2)
+			// {
+			// 	_HorizontalSpeed = -.6f;
+			// 	_VerticalSpeed = 0;
+			// }
+			//
+			Debug.Log(Presets);
+			switch((int)Presets)
 			{
-				_HorizontalSpeed = 0;
-				_VerticalSpeed = -.6f;
-			}
-			else if (Pre2)
-			{
-				_HorizontalSpeed = -.6f;
-				_VerticalSpeed = 0;
+				case (int)EMotionPresets.LinearUp:
+					Debug.Log("Up");
+				break;
+				case (int)EMotionPresets.LinearDown:
+					// if (Configs.Length == 1)
+					// {
+					// 	Speed = Configs[0].Speed;
+					// 	FadeSpeed = Configs[0].FadeSpeed;
+					// 	LimitFadeSpeed = Configs[0].LimitFadeSpeed;
+					// }
+					Speed = new Vector2(0, -0.6f);
+					FadeSpeed = Vector2.zero;
+					LimitFadeSpeed = Vector2.zero;
+					// Debug.Log($"{Speed}, {FadeSpeed}");
+				break;
 			}
 		}
 		else
 		{
-			Speed = MotionConfigs[0].Speed;
-			FadeSpeed = MotionConfigs[0].FadeSpeed;
-			LimitFadeSpeed = MotionConfigs[0].LimitFadeSpeed;
+			Cfg = MotionClipsAssets;
+			Configs = Cfg.Configs;
+			// initialize
+			// Speed = Configs[0].Speed;
+			// FadeSpeed = Configs[0].FadeSpeed;
+			// LimitFadeSpeed = Configs[0].LimitFadeSpeed;
 			//
-			_HorizontalSpeed = Speed.x;
-			_VerticalSpeed = Speed.y;
 		}
+		_HorizontalSpeed = Speed.x;
+		_VerticalSpeed = Speed.y;
 	}
 	
 	// Update is called once per frame
@@ -78,11 +103,37 @@ public class EnemyMotionController : MonoBehaviour
 	}
 	void DoMotion()
 	{
+		// Debug.Log(WaitForNextCLip + ", " + ClipCount + ", " + Configs.Length);
+		// Test field
+		if (Configs.Length > 1 && ClipCount != Configs.Length && !WaitForNextCLip)
+		{
+			// Debug.Log("Change!");
+			Speed = Configs[ClipCount].Speed;
+			FadeSpeed = Configs[ClipCount].FadeSpeed;
+			LimitFadeSpeed = Configs[ClipCount].LimitFadeSpeed;
+			//
+			_HorizontalSpeed = Speed.x;
+			_VerticalSpeed = Speed.y;
+			//
+			AwaitFrameCount = Configs[ClipCount].OffsetTime * 60;
+			WaitForNextCLip = true;
+			ClipCount++;
+		}
+		else if (Configs.Length == 1)
+		{
+			Speed = Configs[ClipCount].Speed;
+			FadeSpeed = Configs[ClipCount].FadeSpeed;
+			LimitFadeSpeed = Configs[ClipCount].LimitFadeSpeed;
+			_HorizontalSpeed = Speed.x;
+			_VerticalSpeed = Speed.y;
+		}
+		//
 		frameCount++;
 		if (!(transform.localPosition.y <= -6.5))
 		{
 			transform.Translate(Vector3.up * _VerticalSpeed * Time.fixedDeltaTime, Space.Self);
 			transform.Translate(Vector2.left * _HorizontalSpeed * Time.fixedDeltaTime, Space.Self);
+			// Debug.Log($"{_HorizontalSpeed}, {_VerticalSpeed}");
 			// fading
 			if (frameCount % 20 == 0)
 			{
@@ -95,11 +146,23 @@ public class EnemyMotionController : MonoBehaviour
 						&& _HorizontalSpeed < LimitFadeSpeed.x + 0.01f) FadeSpeed.x = 0;
 					if (_VerticalSpeed > LimitFadeSpeed.y - 0.01f
 						&& _VerticalSpeed < LimitFadeSpeed.y + 0.01f) FadeSpeed.y = 0;
-					// Debug.Log($"{FadeSpeed}, {_VerticalSpeed}, {LimitFadeSpeed}");
 					frameCount = 0;
+					
 				}
 				// update Speed
-				
+			}
+
+			// wait for next clip
+			if (_HorizontalSpeed > LimitFadeSpeed.x - 0.01f
+				&& _HorizontalSpeed < LimitFadeSpeed.x + 0.01f
+				&& _VerticalSpeed > LimitFadeSpeed.y - 0.01f
+				&& _VerticalSpeed < LimitFadeSpeed.y + 0.01f
+				)
+			{
+				FadeSpeed = Vector2.zero;
+				// Debug.Log("Equals!"+AwaitFrameCount);
+				AwaitFrameCount--;
+				if (AwaitFrameCount >= -1 && AwaitFrameCount <= 0) WaitForNextCLip = false;
 			}
 			
 		}
@@ -111,20 +174,8 @@ public class EnemyMotionController : MonoBehaviour
 	// utils
 	void AutoSet()
 	{
-		MotionConfigs = new MotionConfigs[MotionClips];
+		// MotionConfigs = new MotionConfigs[MotionClips];
 	}
 }
 
-[Serializable]
-public class MotionConfigs
-{
-	[Header("参考标准速度：0.6")]
-	public Vector2 Speed;
-	[Header("衰减速度（加速度）每秒衰减一次")]
-	public Vector2 FadeSpeed;
-	[Header("速度衰减限制（达到限制后速度不再衰减）")]
-	public Vector2 LimitFadeSpeed;
-	[Header("此动作片段与下一个动作片段的间隔时间")]
-	public int OffsetTime;
-}
 

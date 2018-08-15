@@ -33,7 +33,6 @@ public class PlayerBulletSpawner : MonoBehaviour, ISpawnable
 			if(frameCount == 3)
 			{
 				SpawnBullet();
-				
 				// reset frame count
 				frameCount = 0;
 			}
@@ -49,11 +48,6 @@ public class PlayerBulletSpawner : MonoBehaviour, ISpawnable
 		// right bullet
 		GameObject newBulletLeft = Instantiate(bullet, transform.position + new Vector3(0.2f, -0.3f, 0), Quaternion.Euler(0, 0, 90), transform);
 		GameObject newBulletRight = Instantiate(bullet, transform.position + new Vector3(-0.2f, -0.3f, 0), Quaternion.Euler(0, 0, 90), transform);
-		// Emit event
-		// OnFinishedSpawn?.Invoke(newBulletLeft);
-		// OnFinishedSpawn?.Invoke(newBulletRight);
-		newBulletLeft.GetComponent<Rigidbody2D>().velocity = Vector2.up * 40;
-		newBulletRight.GetComponent<Rigidbody2D>().velocity = Vector2.up * 40;
 		// destroy
 
 		

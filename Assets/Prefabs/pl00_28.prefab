@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212604509674865424}
   - component: {fileID: 50933378452149598}
   - component: {fileID: 61383661394925884}
+  - component: {fileID: 114930933698021026}
   m_Layer: 8
   m_Name: pl00_28
   m_TagString: SelfBullets
@@ -87,6 +88,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.17, y: 0.12}
   m_EdgeRadius: 0
+--- !u!114 &114930933698021026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1445657104049398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c54291fc56f43ab4a85e90d37d6a2a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212604509674865424
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -122,7 +134,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300056, guid: fff6a52241a4d7b42a4612a0ac7e53ab, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.497}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

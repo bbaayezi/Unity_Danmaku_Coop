@@ -11,6 +11,7 @@ TagManager:
   - UpperBound
   - BulletYellowSpread
   - BulletYellowSpreadHolder
+  - BulletMgr
   layers:
   - Default
   - TransparentFX
