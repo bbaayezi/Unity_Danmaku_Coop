@@ -15,6 +15,7 @@ public class Debugger : MonoBehaviour
     public GameObject EnemySmallSpawnPoint;
     public GameObject Bullet;
     public GameObject Parent;
+    private int frameCount = 0;
 	void Start () 
     {
         // SpawnEnemy();
@@ -25,7 +26,12 @@ public class Debugger : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-		
+		frameCount++;
+        if(frameCount == 120)
+        {
+            frameCount = 0;
+            Instantiate(Bullet, Bullet.transform.position, Bullet.transform.rotation);
+        }
 	}
 
     async void SpawnEnemy()

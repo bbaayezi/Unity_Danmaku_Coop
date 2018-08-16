@@ -125,9 +125,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletGroupHolder: {fileID: 0}
-  BulletSpeed: 0
-  Enemy: {fileID: 0}
-  BulletGroup: []
+  BulletSpeed: 1.2
+  BulletPrefab: {fileID: 1515260810057584, guid: 8e00bf77216b7e04998912f0bfa29bc5,
+    type: 2}
 --- !u!114 &114949650362819828
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -9,6 +9,7 @@ public class EnemyBulletController : MonoBehaviour
     [Header("子弹速度")]
     public float BulletSpeed;
     // public GameObject Enemy;
+    // public GameObject BulletSpawnPoint;
     public GameObject BulletPrefab;
     private List<GameObject> BulletGroup = new List<GameObject>();
     private SpriteRenderer[] Bullets;
@@ -50,7 +51,7 @@ public class EnemyBulletController : MonoBehaviour
             foreach(SpriteRenderer bullet in Bullets)
             {
                 // Debug.Log(bullet);
-                bullet.gameObject.transform.Translate(-Vector3.up * BulletSpeed * Time.fixedDeltaTime, Space.Self);
+                // bullet.gameObject.transform.Translate(-Vector3.up * BulletSpeed * Time.fixedDeltaTime, Space.Self);
                 // bullet.gameObject.transform.position -= Vector3.up * 1f * Time.fixedDeltaTime;
                 if ((bullet.gameObject.transform.position.y) <= ScreenBorder.y
                 || (bullet.gameObject.transform.position.y) >= 4.5

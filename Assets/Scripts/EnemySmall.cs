@@ -55,17 +55,20 @@ public class EnemySmall : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        life--;
-        // Debug.Log("Enemy collision enter!" + other.transform.name);
-        if (life == 0)
+        // Debug.Log(other.transform.name);
+        if (other.transform.name.Contains("pl00_28"))
+        {
+            // Debug.Log("Life--");
+            life--;
+            if (life == 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+        else if (other.transform.name.Equals("Bounds"))
         {
             Destroy(gameObject);
         }
-        else if (other.transform.name.Equals("UpperBounds"))
-        {
-            Destroy(gameObject);
-        }
-        
     }
 
 }
