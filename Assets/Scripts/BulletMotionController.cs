@@ -6,16 +6,13 @@ public class BulletMotionController : MonoBehaviour
 {
 
 	// Use this for initialization
-	[Header("子弹生成的间隔时间")]
-	public int SpawnOffset;
-	[Header("绑定的敌机目标")]
-	public GameObject BindedEnemyTarget;
 	private SpriteRenderer SRenderer;
 	private int Transition = 5;
 	private int frameCount;
 	private float InitOpacity = .5f;
 	void Start () 
 	{
+		// SpawnPoint = BulletMotionConfig.SpawnPoint;
 		BeforeCreated();
 	}
 	
@@ -23,15 +20,22 @@ public class BulletMotionController : MonoBehaviour
 	void FixedUpdate () 
 	{
 		frameCount++;
-		if (frameCount == SpawnOffset * 60)
-		{
-			frameCount = 0;
-			Instantiate(gameObject, BindedEnemyTarget.transform.position, transform.rotation);
-		}
-		if (!DuringCreated())
+		// if (frameCount == SpawnOffset * 60)
+		// {
+		// 	frameCount = 0;
+		// 	if (BindedEnemyTarget != null)
+		// 		Instantiate(gameObject, BindedEnemyTarget.transform.position, transform.rotation);
+		// }
+
+		//
+		if (!DuringCreation())
 		{
 			// Debug.Log("Not During Creation");
 			transform.Translate(-Vector3.up * 1.2f * Time.fixedDeltaTime, Space.Self);
+			if (transform.position.y < -2f)
+			{
+				Destroy(gameObject);
+			}
 		}
 	}
 
@@ -42,11 +46,10 @@ public class BulletMotionController : MonoBehaviour
 		SRenderer.material.color = new Color(1, 1, 1, InitOpacity);
 	}
 
-	bool DuringCreated()
+	bool DuringCreation()
 	{
 		if (Transition != 0)
 		{
-			
 			Transition--;
 			InitOpacity += .1f;
 			transform.localScale -= new Vector3(.2f, .2f, .2f);

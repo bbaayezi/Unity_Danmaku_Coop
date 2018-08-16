@@ -26,12 +26,12 @@ public class Debugger : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-		frameCount++;
-        if(frameCount == 120)
-        {
-            frameCount = 0;
-            Instantiate(Bullet, Bullet.transform.position, Bullet.transform.rotation);
-        }
+		// frameCount++;
+        // if(frameCount == 120)
+        // {
+        //     frameCount = 0;
+        //     Instantiate(Bullet, Bullet.transform.position, Bullet.transform.rotation);
+        // }
 	}
 
     async void SpawnEnemy()

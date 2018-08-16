@@ -1,29 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class EnemyBulletController : MonoBehaviour 
 {
-    [Header("子弹组Holder")]
-    public GameObject BulletGroupHolder;
-    [Header("子弹速度")]
-    public float BulletSpeed;
+    // [Header("子弹组Holder")]
+    // public GameObject BulletGroupHolder;
+    // [Header("子弹速度")]
+    // public float BulletSpeed;
     // public GameObject Enemy;
     // public GameObject BulletSpawnPoint;
-    public GameObject BulletPrefab;
-    private List<GameObject> BulletGroup = new List<GameObject>();
-    private SpriteRenderer[] Bullets;
-    private GameObject BulletMgr;
+    // public GameObject BulletPrefab;
+    public BulletMotionCfg BMCfg;
     private Vector3 ScreenBorder;
-    private int frameCount;
+    private int FrameCount;
+    private int DefaultFrameCount = 30;
+    private int TotalSpawn = 0;
 	// Use this for initialization
 	void Start () 
     {
+        // SpawnPoint = BMCfg.SpawnPoint;
+        // TotalSpawn = BMCfg.TotalSpawn.Length;
 		ScreenBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 5));
-        foreach(var bullet in BulletPrefab.GetComponentsInChildren<BulletMotionController>())
-        {
-            BulletGroup.Add(bullet.gameObject);
-        }
+        // foreach(var bullet in BulletPrefab.GetComponentsInChildren<BulletMotionController>())
+        // {
+        //     BulletGroup.Add(bullet.gameObject);
+        // }
         // BulletMgr = GameObject.FindGameObjectWithTag("BulletMgr");
         // Debug.Log(ScreenBorder);
     }
@@ -39,48 +42,48 @@ public class EnemyBulletController : MonoBehaviour
                     
                 SpawnBullet();
             }
-        }
-        
-
-        // do bullet motion
-        Bullets = BulletGroupHolder.GetComponentsInChildren<SpriteRenderer>() as SpriteRenderer[];
-        // Bullets[0].gameObject.transform.position -= Vector3.up * 1f * Time.fixedDeltaTime;
-        // Debug.Log(Bullets[0]);
-        if (Bullets != null)
-        {
-            foreach(SpriteRenderer bullet in Bullets)
-            {
-                // Debug.Log(bullet);
-                // bullet.gameObject.transform.Translate(-Vector3.up * BulletSpeed * Time.fixedDeltaTime, Space.Self);
-                // bullet.gameObject.transform.position -= Vector3.up * 1f * Time.fixedDeltaTime;
-                if ((bullet.gameObject.transform.position.y) <= ScreenBorder.y
-                || (bullet.gameObject.transform.position.y) >= 4.5
-                || (bullet.gameObject.transform.position.x) <= -3
-                || (bullet.gameObject.transform.position.x) >= 3)
-                {
-                    Destroy(bullet.gameObject);
-                }
-            }
-        }
-		
+        }	
 	}
 
     void SpawnBullet()
     {
-        if (frameCount % 30 == 0) // every 70 frames spawn a bullet
+        if (FrameCount == DefaultFrameCount) // every 60 frames spawn a bullet
         {
+            // Debug.Log(TotalSpawn);
+            FrameCount = 0;
+            // Debug.Log(TotalSpawn);
+            if (TotalSpawn < BMCfg.TotalSpawn.Length)
             {
-                foreach(GameObject bullet in BulletGroup)
+                // spawn point set to enemy
+                if (BMCfg.TotalSpawn[TotalSpawn].SpawnPoint.Capacity == 0)
                 {
-                    if (BulletGroupHolder != null)
+                    foreach(Vector3 rotation in BMCfg.TotalSpawn[TotalSpawn].Rotation)
                     {
-                        Instantiate(bullet, transform.position, bullet.transform.rotation, BulletGroupHolder.transform);
+                        Instantiate(BMCfg.TotalSpawn[TotalSpawn].Appearence,
+                        transform.position,
+                        Quaternion.Euler(rotation));
                     }
                 }
+                else
+                {
+                    foreach(Vector3 rotation in BMCfg.TotalSpawn[TotalSpawn].Rotation)
+                    {
+                        Instantiate(BMCfg.TotalSpawn[TotalSpawn].Appearence,
+                        transform.position + BMCfg.TotalSpawn[TotalSpawn].SpawnPoint[0],
+                        Quaternion.Euler(rotation));
+                    }
+                }
+                DefaultFrameCount = BMCfg.TotalSpawn[TotalSpawn].SpawnOffset;
             }
-            
+            else if (BMCfg.RepeatProcedure && TotalSpawn == BMCfg.TotalSpawn.Length)
+            {
+                // reset the spawn time    
+                TotalSpawn = -1;
+                FrameCount = DefaultFrameCount - 1;
+            }
+            TotalSpawn++;
         }
-        frameCount++;
+        FrameCount++;
     }
     // utils
 }

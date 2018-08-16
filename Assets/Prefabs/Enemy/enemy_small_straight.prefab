@@ -124,10 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5fd9846f6add0f4f89eab6084c4c5e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletGroupHolder: {fileID: 0}
-  BulletSpeed: 1.2
-  BulletPrefab: {fileID: 1515260810057584, guid: 8e00bf77216b7e04998912f0bfa29bc5,
-    type: 2}
+  BMCfg: {fileID: 11400000, guid: 8b6ca71043aff834486b923c93195c36, type: 2}
 --- !u!114 &114949650362819828
 MonoBehaviour:
   m_ObjectHideFlags: 1

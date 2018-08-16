@@ -1,5 +1,9 @@
 # 敌机预制件制作文档
 
+## 更新
+
+取消子弹组Holder的概念，使用`EnemyBulletController`脚本用于生成子弹的逻辑，另外每个子弹都挂载`BulletMotionController`用于控制运动。生成子弹通过配置文件来设置，请与`Resources`文件夹下新建`Assets/Create/Unity_Danmaku_Coop/BulletMotionCfg`资源文件来创建生成子弹逻辑，并挂载至相应的`EnemyBulletController`脚本上。
+
 ## 结构
 
 由目前已经做好的原型来看，敌机精灵统一放至场景下的Enemy中，该游戏对象包括`Enemy Main Controller`用来控制敌机的生成，`Enemy Bullet Controller`用来统一管理敌机的子弹的运动规则，`EnemyMotionController`作为每一个挂载至敌机对象脚本的依赖脚本，用于控制敌机的运动逻辑。
@@ -8,13 +12,11 @@
 
 ## 逻辑
 
-|              预制件              |                             功能                             |   依赖    |
-| :------------------------------: | :----------------------------------------------------------: | :-------: |
-|        敌机`enemy_[any]`         |                敌机自身具有固定的子弹生成频率                | 脚本项[1] |
-|      子弹组`bullets_[any]`       |              子弹组预制件仅记录子弹组的初始位置              |    无     |
-| 子弹组Holder`[any]_group_holder` | 子弹组Holder用来承载所有生成的子弹组，同时，子弹控制器`Enemy Bullet Controller`需要以此为凭依来控制子弹组的运动轨迹 |    无     |
+|        预制件         |                功能                |   依赖    |
+| :-------------------: | :--------------------------------: | :-------: |
+|   敌机`enemy_[any]`   |   敌机自身具有固定的子弹生成频率   | 脚本项[1] |
+| 子弹组`bullets_[any]` | 子弹组预制件仅记录子弹组的初始位置 |    无     |
 
-[^注]: 子弹控制器通过Tag来获取子弹组Holder，并便利子弹组Holder下的子弹组元素进行运动轨迹挂载。另，敌机所依赖的子弹组必须拆分为子弹组下的独立子弹物体分别挂载，否则直接使用预制件的话，会在运行时改变预制件的状态，引起Bug。
 [^1]: 包括运动轨迹控制脚本`EnemyMotionController`和子弹生成控制脚本`EnemyBulletSpawner`
 
 
@@ -40,15 +42,10 @@
 
 鉴于子弹颜色在不同背景下可能会对玩家的视觉造成影响，因此显式标注
 
-### 子弹组Holder
-
-多个子弹预制件将组成子弹组，子弹组将统一作为对应Holder的子元素生成。子弹组Holder为独立的游戏物体，并且也将保存为预制件。后缀为`group_holder`的预制件即为子弹组Holder。
-
 ## 命名
 
-|     物体     |              命名规则               |
-| :----------: | :---------------------------------: |
-|     敌机     |  `enemy_[e_type]_[e_motion_type]`   |
-|     子弹     | `bullets_[b_motion_type]_[b_color]` |
-| 子弹组Holder |       `[any]_[_group_holder]`       |
+| 物体 |              命名规则               |
+| :--: | :---------------------------------: |
+| 敌机 |  `enemy_[e_type]_[e_motion_type]`   |
+| 子弹 | `bullets_[b_motion_type]_[b_color]` |
 
