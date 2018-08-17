@@ -17,12 +17,14 @@ public class EnemyBulletController : MonoBehaviour
     private int FrameCount;
     private int DefaultFrameCount = 30;
     private int TotalSpawn = 0;
+    private GameObject BulletMgr;
 	// Use this for initialization
 	void Start () 
     {
         // SpawnPoint = BMCfg.SpawnPoint;
         // TotalSpawn = BMCfg.TotalSpawn.Length;
 		ScreenBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 5));
+        BulletMgr = GameObject.FindGameObjectWithTag("BulletMgr");
         // foreach(var bullet in BulletPrefab.GetComponentsInChildren<BulletMotionController>())
         // {
         //     BulletGroup.Add(bullet.gameObject);
@@ -61,7 +63,8 @@ public class EnemyBulletController : MonoBehaviour
                     {
                         Instantiate(BMCfg.TotalSpawn[TotalSpawn].Appearence,
                         transform.position,
-                        Quaternion.Euler(rotation));
+                        Quaternion.Euler(rotation),
+                        BulletMgr.transform);
                     }
                 }
                 else
@@ -70,7 +73,8 @@ public class EnemyBulletController : MonoBehaviour
                     {
                         Instantiate(BMCfg.TotalSpawn[TotalSpawn].Appearence,
                         transform.position + BMCfg.TotalSpawn[TotalSpawn].SpawnPoint[0],
-                        Quaternion.Euler(rotation));
+                        Quaternion.Euler(rotation),
+                        BulletMgr.transform);
                     }
                 }
                 DefaultFrameCount = BMCfg.TotalSpawn[TotalSpawn].SpawnOffset;
