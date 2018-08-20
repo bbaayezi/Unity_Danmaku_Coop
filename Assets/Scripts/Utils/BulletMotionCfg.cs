@@ -4,7 +4,6 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "BulletMotionCfg", menuName = "Unity_Danmaku_Coop/BulletMotionCfg", order = 0)]
 public class BulletMotionCfg : ScriptableObject 
 {
-	
 	[Header("总共生成的子弹组个数。设置好个数后，其下包括子弹细节设置")]
 	public BDetail[] TotalSpawn;
 	[Header("是否重复以上子弹生成过程")]

@@ -51,17 +51,6 @@ public class EnemyMotionController : MonoBehaviour
 		// Debug.Log(Cfg.Speed);
 		if (UsePresets)
 		{
-			// if (Pre1)
-			// {
-			// 	_HorizontalSpeed = 0;
-			// 	_VerticalSpeed = -.6f;
-			// }
-			// else if (Pre2)
-			// {
-			// 	_HorizontalSpeed = -.6f;
-			// 	_VerticalSpeed = 0;
-			// }
-			//
 			Debug.Log(Presets);
 			switch((int)Presets)
 			{
@@ -69,12 +58,6 @@ public class EnemyMotionController : MonoBehaviour
 					Debug.Log("Up");
 				break;
 				case (int)EMotionPresets.LinearDown:
-					// if (Configs.Length == 1)
-					// {
-					// 	Speed = Configs[0].Speed;
-					// 	FadeSpeed = Configs[0].FadeSpeed;
-					// 	LimitFadeSpeed = Configs[0].LimitFadeSpeed;
-					// }
 					Speed = new Vector2(0, -0.6f);
 					FadeSpeed = Vector2.zero;
 					LimitFadeSpeed = Vector2.zero;

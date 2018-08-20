@@ -3,7 +3,19 @@ guid: a6f273f8e81f7664e9803780d501bc97
 timeCreated: 1533169535
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: eff_breakwave2_1
+    21300002: eff_breakwave2_3
+    21300004: eff_breakwave2_4
+    21300006: eff_breakwave2_5
+    21300008: eff_breakwave2_6
+    21300010: eff_breakwave2_7
+    21300012: eff_breakwave2_8
+    21300014: eff_breakwave2_9
+    21300016: eff_breakwave2_10
+    21300018: eff_breakwave2_11
+    21300020: eff_breakwave2_12
+    21300022: eff_breakwave2_13
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -79,7 +91,175 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: eff_breakwave2_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 436
+        width: 140
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eff_breakwave2_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 436
+        width: 140
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eff_breakwave2_4
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 437
+        width: 140
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eff_breakwave2_5
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 357
+        width: 140
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eff_breakwave2_6
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 354
+        width: 140
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eff_breakwave2_7
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 274
+        width: 140
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eff_breakwave2_8
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 353
+        width: 140
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eff_breakwave2_9
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 273
+        width: 140
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eff_breakwave2_10
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 273
+        width: 125
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eff_breakwave2_11
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 192
+        width: 140
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eff_breakwave2_12
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 193
+        width: 140
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eff_breakwave2_13
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 194
+        width: 140
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 

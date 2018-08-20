@@ -17,7 +17,7 @@ public class PlayerBulletMotionController : MonoBehaviour
 	void FixedUpdate () 
 	{
 		Shoot();
-		if (transform.position.y > 3.4f)
+		if (transform.position.y > 4f)
 		{
 			Destroy(gameObject);
 		}

@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using System;
 
 [RequireComponent(typeof(EnemyMotionController), typeof(EnemyBulletController), typeof(Rigidbody2D))]
-public class EnemySmall : MonoBehaviour 
+[RequireComponent(typeof(CircleCollider2D))]
+public class Enemy : MonoBehaviour 
 {
     public delegate void SpawnEvent(GameObject _this);
     // private GameObject BulletGroupHolder;
     // public GameObject[] Bullets;
     private int frameCount;
-    private int life = 15;
+    private int life = 30;
 
 	// Use this for initialization
 	void Start () 

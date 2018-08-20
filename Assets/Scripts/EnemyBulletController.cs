@@ -21,16 +21,8 @@ public class EnemyBulletController : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
-        // SpawnPoint = BMCfg.SpawnPoint;
-        // TotalSpawn = BMCfg.TotalSpawn.Length;
 		ScreenBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 5));
         BulletMgr = GameObject.FindGameObjectWithTag("BulletMgr");
-        // foreach(var bullet in BulletPrefab.GetComponentsInChildren<BulletMotionController>())
-        // {
-        //     BulletGroup.Add(bullet.gameObject);
-        // }
-        // BulletMgr = GameObject.FindGameObjectWithTag("BulletMgr");
-        // Debug.Log(ScreenBorder);
     }
 	
 	// Update is called once per frame
@@ -44,7 +36,7 @@ public class EnemyBulletController : MonoBehaviour
                     
                 SpawnBullet();
             }
-        }	
+        }
 	}
 
     void SpawnBullet()

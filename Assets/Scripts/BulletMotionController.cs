@@ -20,14 +20,7 @@ public class BulletMotionController : MonoBehaviour
 	void FixedUpdate () 
 	{
 		frameCount++;
-		// if (frameCount == SpawnOffset * 60)
-		// {
-		// 	frameCount = 0;
-		// 	if (BindedEnemyTarget != null)
-		// 		Instantiate(gameObject, BindedEnemyTarget.transform.position, transform.rotation);
-		// }
-
-		//
+		
 		if (!DuringCreation())
 		{
 			// Debug.Log("Not During Creation");

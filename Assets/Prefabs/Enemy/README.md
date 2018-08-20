@@ -2,7 +2,7 @@
 
 ## 更新
 
-取消子弹组Holder的概念，使用`EnemyBulletController`脚本用于生成子弹的逻辑，另外每个子弹都挂载`BulletMotionController`用于控制运动。生成子弹通过配置文件来设置，请与`Resources`文件夹下新建`Assets/Create/Unity_Danmaku_Coop/BulletMotionCfg`资源文件来创建生成子弹逻辑，并挂载至相应的`EnemyBulletController`脚本上。
+取消子弹组Holder的概念，使用`EnemyBulletController`脚本用于生成子弹的逻辑，另外每个子弹都挂载`BulletMotionController`用于控制运动。生成子弹通过配置文件来设置，请于`Resources`文件夹下新建`Assets/Create/Unity_Danmaku_Coop/BulletMotionCfg`资源文件来创建生成子弹逻辑，并挂载至相应的`EnemyBulletController`脚本上。
 
 ## 结构
 

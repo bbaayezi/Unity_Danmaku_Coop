@@ -44,8 +44,13 @@ public class PlayerController : MonoBehaviour
 			FrameCount = 0;
 			// spawn normal bullet
 			// BulletSRenderer.enabled = true;
-			SpawnBullet(transform.position + new Vector3(-0.2f, 0.008f, 0),
-			transform.position + new Vector3(0.2f, 0.008f, 0));
+
+			// if press Z
+			if (Input.GetAxis("Shoot") > .1f)
+			{
+				SpawnBullet(transform.position + new Vector3(-0.2f, 0.008f, 0),
+				transform.position + new Vector3(0.2f, 0.008f, 0));
+			}
 		}
 	}
 
@@ -142,5 +147,10 @@ public class PlayerController : MonoBehaviour
 	private void ResetMovement()
 	{
 		HorMovement = VerMovement = Vector2.zero;
+	}
+
+	private void OnCollisionEnter2D(Collision2D other) 
+	{
+		Debug.Log("Get hit! " + other.gameObject.name);
 	}
 }
