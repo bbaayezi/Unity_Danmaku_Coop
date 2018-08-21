@@ -10,6 +10,7 @@ public class BulletMotionController : MonoBehaviour
 	private int Transition = 5;
 	private int frameCount;
 	private float InitOpacity = .5f;
+	public BulletMotionCfg Cfg;
 	void Start () 
 	{
 		// SpawnPoint = BulletMotionConfig.SpawnPoint;

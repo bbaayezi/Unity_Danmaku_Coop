@@ -29,7 +29,8 @@ public class EnemyMainController : MonoBehaviour
             if (cfg.Enemy != null)
             {
                 GameObject obj = Instantiate(cfg.Enemy, cfg.SpawnPoint.transform.position, cfg.Enemy.transform.rotation, transform.parent);
-                obj.GetComponent<EnemyMotionController>().MotionClipsAssets = cfg.EnemyMotionConfig;
+                // obj.AddComponent<EnemyMotionController>();
+                obj.GetComponent<EnemyMotionController>().Cfg = cfg.EnemyMotionConfig;
                 obj.GetComponent<EnemyBulletController>().BMCfg = cfg.BulletMotionConfig;
             }
         }
@@ -39,12 +40,6 @@ public class EnemyMainController : MonoBehaviour
             Debug.Log("Spawn Over!");
             Destroy(gameObject);
         }
-        // else
-        // {
-        //     frameCount = 0;
-        //     Debug.Log("Spawn Over!");
-        //     Destroy(gameObject);
-        // }
     }
 }
 [System.Serializable]

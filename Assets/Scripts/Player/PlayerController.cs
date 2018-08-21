@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 	private float HorInput;
 	private float VerInput;
-	private float Speed = 2.5f;
+	private float Speed = 2.8f;
 	private Vector2 HorMovement = Vector2.zero;
 	private Vector2 VerMovement = Vector2.zero;
 	private Vector2 Movement;
@@ -79,12 +79,12 @@ public class PlayerController : MonoBehaviour
 		// check for low speed
 		if (Input.GetKey(KeyCode.LeftShift))
 		{
-			Speed = 1.2f;
+			Speed = 1.4f;
 			SlowEffect.GetComponent<SpriteRenderer>().enabled = true;
 		}
 		else
 		{
-			Speed = 2.5f;
+			Speed = 2.8f;
 			SlowEffect.GetComponent<SpriteRenderer>().enabled = false;
 		}
 		// check for border

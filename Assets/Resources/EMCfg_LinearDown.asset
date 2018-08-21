@@ -11,9 +11,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a592fd99f0dde5b428059d0ef5eb1fb2, type: 3}
   m_Name: EMCfg_LinearDown
   m_EditorClassIdentifier: 
-  MotionClips: 1
-  Configs:
-  - Speed: {x: 0, y: -0.6}
-    FadeSpeed: {x: 0, y: 0}
-    LimitFadeSpeed: {x: 0, y: 0}
-    OffsetTime: 0
+  CurveType: 0
+  HorVelocity_TimeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: -0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  VerVelocity_TimeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: -0.6
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 3.6
+      value: -0.6
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 1
+    m_RotationOrder: 0
+  HorAcceleration_TimeCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  VerAcceleration_TimeCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

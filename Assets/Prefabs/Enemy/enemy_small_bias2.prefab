@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f11136b41d602e48b124ce51808af67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MotionClipsAssets: {fileID: 11400000, guid: 53404e417f9f2bf42bb3b685b5b89e9b, type: 2}
+  MotionClipsAssets: {fileID: 0}
   UsePresets: 0
   Presets: 1
   MotionClips: 1
