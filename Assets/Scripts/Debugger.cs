@@ -15,18 +15,31 @@ public class Debugger : MonoBehaviour
     public GameObject EnemySmallSpawnPoint;
     public GameObject Bullet;
     public GameObject Parent;
+    public GameObject ParticleSys;
+    private ParticleSystem Ps;
+    public GameObject EffectHolder;
     private int frameCount = 0;
 	void Start () 
     {
         // SpawnEnemy();
         // SpawnBullet();
         // SpawnMediumEnemy();
+        // Ps = ParticleSys.GetComponent<ParticleSystem>();
+        // Ps.Play();
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-		// frameCount++;
+		frameCount++;
+        if (frameCount == 60)
+        {
+            for (int i = 0; i < EffectHolder.GetComponentsInChildren<ParticleSystem>().Length - 2; i++)
+            {
+                Destroy(EffectHolder.GetComponentsInChildren<ParticleSystem>()[i].gameObject);
+            }
+            frameCount = 0;
+        }
         // if(frameCount == 120)
         // {
         //     frameCount = 0;

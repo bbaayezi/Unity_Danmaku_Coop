@@ -8,14 +8,6 @@ public class BulletMotionCfg : ScriptableObject
 	public BDetail[] TotalSpawn;
 	[Header("是否重复以上子弹生成过程")]
 	public bool RepeatProcedure;
-
-
-
-
-	//
-	// public float SpawnOffset;
-	
-	// public BDetail[] NumsPerSpawn;
 	
 	[System.Serializable]
 	public class BDetail
@@ -28,18 +20,14 @@ public class BulletMotionCfg : ScriptableObject
 		public List<Vector3> SpawnPoint;
 		[Header("单次生成子弹的运动信息细节")]
 		public BMotion Motion;
-		[Header("此次生成子弹和下一次生成子弹的间隔时间")]
-		public int SpawnOffset;
+		[Header("此次生成子弹和上一次生成子弹的间隔时间")]
+		public int StartSpawnTime;
 	}
 
 	[System.Serializable]
 	public class BMotion
 	{
-		[Header("子弹初始速度")]
-		public Vector2 Speed;
-		[Header("子弹加速度")]
-		public Vector2 FadeSpeed;
-		[Header("子弹的最终速度")]
-		public Vector2 FinalSpeed;
+		public AnimationCurve VerVelocity_TimeCurve;
+		public AnimationCurve HorVelocity_TimeCurve;
 	}
 }

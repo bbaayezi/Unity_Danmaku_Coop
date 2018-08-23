@@ -55,14 +55,14 @@ TagManager:
   - name: PlayerBullet
     uniqueID: 987442705
     locked: 0
+  - name: Enemy
+    uniqueID: 2486473515
+    locked: 0
   - name: Player
     uniqueID: 3526372693
     locked: 0
   - name: SlowEff
     uniqueID: 2899701401
-    locked: 0
-  - name: Enemy
-    uniqueID: 2486473515
     locked: 0
   - name: Bullet
     uniqueID: 2051263709

@@ -14,6 +14,10 @@ public class Enemy : MonoBehaviour
     // public GameObject[] Bullets;
     private int frameCount;
     private int life = 30;
+    public delegate void EnemyDestroyEvent(Transform trans);
+    public static EnemyDestroyEvent OnDestroy;
+    public GameObject ParticleSys;
+    private ParticleSystem Ps;
 
 	// Use this for initialization
 	void Start () 
@@ -36,6 +40,10 @@ public class Enemy : MonoBehaviour
             life--;
             if (life == 0)
             {
+                // OnDestroy?.Invoke(transform);
+                GameObject obj = Instantiate(ParticleSys, transform.position, transform.rotation,
+                GameObject.Find("Effect").transform);
+                obj.GetComponent<ParticleSystem>().Play();
                 Destroy(gameObject);
             }
         }

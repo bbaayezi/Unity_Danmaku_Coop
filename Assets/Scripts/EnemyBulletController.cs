@@ -41,7 +41,7 @@ public class EnemyBulletController : MonoBehaviour
 
     void SpawnBullet()
     {
-        if (FrameCount == DefaultFrameCount) // every 60 frames spawn a bullet
+        if (FrameCount == BMCfg.TotalSpawn[0].StartSpawnTime)
         {
             // Debug.Log(TotalSpawn);
             FrameCount = 0;
@@ -69,7 +69,7 @@ public class EnemyBulletController : MonoBehaviour
                         BulletMgr.transform);
                     }
                 }
-                DefaultFrameCount = BMCfg.TotalSpawn[TotalSpawn].SpawnOffset;
+                DefaultFrameCount = BMCfg.TotalSpawn[TotalSpawn].StartSpawnTime;
             }
             else if (BMCfg.RepeatProcedure && TotalSpawn == BMCfg.TotalSpawn.Length)
             {

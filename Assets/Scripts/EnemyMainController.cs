@@ -10,6 +10,13 @@ public class EnemyMainController : MonoBehaviour
     public SpawnConfig[] Config;
     private int frameCount;
     private int Index = 0;
+    public GameObject ParticleSys;
+    private ParticleSystem Ps;
+
+    private void Start() 
+    {
+        Ps = ParticleSys.GetComponent<ParticleSystem>();
+    }
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
@@ -17,6 +24,24 @@ public class EnemyMainController : MonoBehaviour
     {
         SpawnEnemy();
     }
+
+    // private void OnEnable() 
+    // {
+    //     Enemy.OnDestroy += PlayDestroyEff;
+    // }
+
+    // private void OnDisable() 
+    // {
+    //     Enemy.OnDestroy -= PlayDestroyEff;
+    // }
+
+    // async void PlayDestroyEff(Transform trans)
+    // {
+    //     GameObject obj = Instantiate(ParticleSys, trans.position, transform.rotation);
+    //     obj.GetComponent<ParticleSystem>().Play();
+    //     await Task.Delay(TimeSpan.FromMilliseconds(1000));
+    //     Destroy(obj);
+    // }
 
     void SpawnEnemy()
     {

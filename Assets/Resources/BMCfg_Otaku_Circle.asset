@@ -11,5 +11,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce4bc374e938b1b4d90b5225a8dfc921, type: 3}
   m_Name: BMCfg_Otaku_Circle
   m_EditorClassIdentifier: 
-  TotalSpawn: []
-  RepeatProcedure: 0
+  TotalSpawn:
+  - Appearence: {fileID: 1235147522780678, guid: 71a8acb66c5b1284bb8bdcea29bbde0e,
+      type: 2}
+    Rotation:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 30}
+    - {x: 0, y: 0, z: -30}
+    - {x: 0, y: 0, z: 60}
+    - {x: 0, y: 0, z: -60}
+    - {x: 0, y: 0, z: 90}
+    - {x: 0, y: 0, z: -90}
+    SpawnPoint: []
+    Motion:
+      VerVelocity_TimeCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      HorVelocity_TimeCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+    StartSpawnTime: 60
+  - Appearence: {fileID: 1235147522780678, guid: 71a8acb66c5b1284bb8bdcea29bbde0e,
+      type: 2}
+    Rotation:
+    - {x: 0, y: 0, z: 15}
+    - {x: 0, y: 0, z: -15}
+    - {x: 0, y: 0, z: 45}
+    - {x: 0, y: 0, z: -45}
+    - {x: 0, y: 0, z: 75}
+    - {x: 0, y: 0, z: -75}
+    SpawnPoint: []
+    Motion:
+      VerVelocity_TimeCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      HorVelocity_TimeCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+    StartSpawnTime: 0
+  RepeatProcedure: 1

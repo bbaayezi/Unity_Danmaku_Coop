@@ -26,7 +26,7 @@ public class BulletMotionController : MonoBehaviour
 		{
 			// Debug.Log("Not During Creation");
 			transform.Translate(-Vector3.up * 1.2f * Time.fixedDeltaTime, Space.Self);
-			if (transform.position.y < -2f)
+			if (transform.position.y < -2f || transform.position.x > 2.5f || transform.position.x < -3.5f)
 			{
 				Destroy(gameObject);
 			}

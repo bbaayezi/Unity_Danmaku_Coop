@@ -31,17 +31,20 @@ public class EnemyMotionController : MonoBehaviour
 	}
 	void DoMotion()
 	{
-		switch ((int)Cfg.CurveType)
+		if (Cfg != null)
 		{
-			// VT Curve
-			case 0:
-				DoVTMotion();
-			break;
-			// AT Curve
-			case 1:
-				DoATMotion();
-			break;
-		}	
+			switch ((int)Cfg.CurveType)
+			{
+				// VT Curve
+				case 0:
+					DoVTMotion();
+				break;
+				// AT Curve
+				case 1:
+					DoATMotion();
+				break;
+			}
+		}
 	}
 	// utils
 	void DoVTMotion()

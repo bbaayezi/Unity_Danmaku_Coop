@@ -23,6 +23,14 @@ public class PlayerBulletMotionController : MonoBehaviour
 		}
 	}
 
+	private void OnCollisionEnter2D(Collision2D other) 
+	{
+		if (other.transform.name.Contains("enemy"))
+		{
+			Destroy(gameObject);
+		}
+	}
+
 	void Shoot()
 	{
 		transform.Translate(-Vector2.left * 20f * Time.fixedDeltaTime);
