@@ -25,24 +25,6 @@ public class EnemyMainController : MonoBehaviour
         SpawnEnemy();
     }
 
-    // private void OnEnable() 
-    // {
-    //     Enemy.OnDestroy += PlayDestroyEff;
-    // }
-
-    // private void OnDisable() 
-    // {
-    //     Enemy.OnDestroy -= PlayDestroyEff;
-    // }
-
-    // async void PlayDestroyEff(Transform trans)
-    // {
-    //     GameObject obj = Instantiate(ParticleSys, trans.position, transform.rotation);
-    //     obj.GetComponent<ParticleSystem>().Play();
-    //     await Task.Delay(TimeSpan.FromMilliseconds(1000));
-    //     Destroy(obj);
-    // }
-
     void SpawnEnemy()
     {
         frameCount++;
@@ -56,7 +38,7 @@ public class EnemyMainController : MonoBehaviour
                 GameObject obj = Instantiate(cfg.Enemy, cfg.SpawnPoint.transform.position, cfg.Enemy.transform.rotation, transform.parent);
                 // obj.AddComponent<EnemyMotionController>();
                 obj.GetComponent<EnemyMotionController>().Cfg = cfg.EnemyMotionConfig;
-                obj.GetComponent<EnemyBulletController>().BMCfg = cfg.BulletMotionConfig;
+                obj.GetComponent<EnemyBulletController>().BSCfg = cfg.BulletMotionConfig;
             }
         }
         else if (Index == Config.Length)
@@ -74,6 +56,6 @@ public class SpawnConfig
     public GameObject Enemy;
     public GameObject SpawnPoint;
     public EnemyMotionCfg EnemyMotionConfig;
-    public BulletMotionCfg BulletMotionConfig;
+    public BulletSpawnCfg BulletMotionConfig;
     
 }

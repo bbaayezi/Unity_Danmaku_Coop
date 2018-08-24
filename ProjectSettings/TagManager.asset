@@ -61,6 +61,9 @@ TagManager:
   - name: Player
     uniqueID: 3526372693
     locked: 0
+  - name: DestroyEff
+    uniqueID: 2729586795
+    locked: 0
   - name: SlowEff
     uniqueID: 2899701401
     locked: 0

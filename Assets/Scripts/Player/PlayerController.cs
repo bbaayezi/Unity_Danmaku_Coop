@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 	public int Level;
 	public GameObject Wingman;
 	public GameObject Bullet;
+	private Animator anim;
 	
 	// Use this for initialization
 	void Start () 
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
 			SpawnWingman(transform.position - new Vector3(0.18f, 0.22f, 0),
 			transform.position + new Vector3(0.18f, -0.22f, 0));
 		}
+		anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -118,8 +120,18 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 		// update movement
+		
 		Movement = HorMovement + VerMovement;
-
+		if (Movement.x > 0.01f)
+		{
+			anim.SetBool("TurnRight", true);
+			anim.SetBool("TurnLeft", false);
+		}
+		else if (Movement.x < -0.01f)
+		{
+			anim.SetBool("TurnLeft", true);
+			anim.SetBool("TurnRight", false);
+		}
 		transform.Translate(Movement, Space.Self);
 	}
 

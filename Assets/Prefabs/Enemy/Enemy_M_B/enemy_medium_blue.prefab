@@ -109,6 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb84bb42b52177e40889c4f562dc92a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ParticleSys: {fileID: 1574463462623766, guid: c2b70efb644e9ce468e02e1908969061,
+    type: 2}
 --- !u!114 &114764581185984664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5fd9846f6add0f4f89eab6084c4c5e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BMCfg: {fileID: 0}
+  BSCfg: {fileID: 0}
 --- !u!114 &114894836126223364
 MonoBehaviour:
   m_ObjectHideFlags: 1

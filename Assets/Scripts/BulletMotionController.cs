@@ -10,7 +10,12 @@ public class BulletMotionController : MonoBehaviour
 	private int Transition = 5;
 	private int frameCount;
 	private float InitOpacity = .5f;
-	public BulletMotionCfg Cfg;
+	public BulletMotionCfg BMCfg;
+	public AnimationCurve HorVelocityTimeCurve;
+	public AnimationCurve VerVelocityTimeCurve;
+	private float CurrentTime;
+	private float _Speed;
+	private Vector2 Movement;
 	void Start () 
 	{
 		// SpawnPoint = BulletMotionConfig.SpawnPoint;
@@ -21,15 +26,21 @@ public class BulletMotionController : MonoBehaviour
 	void FixedUpdate () 
 	{
 		frameCount++;
-		
 		if (!DuringCreation())
 		{
+			if (CurrentTime == Mathf.Infinity - 0.1f)
+			{
+				CurrentTime = 0;
+			}
+			Movement = new Vector2(HorVelocityTimeCurve.Evaluate(CurrentTime),
+			VerVelocityTimeCurve.Evaluate(CurrentTime));
 			// Debug.Log("Not During Creation");
-			transform.Translate(-Vector3.up * 1.2f * Time.fixedDeltaTime, Space.Self);
+			transform.Translate(Movement * Time.fixedDeltaTime, Space.Self);
 			if (transform.position.y < -2f || transform.position.x > 2.5f || transform.position.x < -3.5f)
 			{
 				Destroy(gameObject);
 			}
+			CurrentTime += 0.01f;
 		}
 	}
 
@@ -51,5 +62,10 @@ public class BulletMotionController : MonoBehaviour
 			return true;
 		}
 		return false;
+	}
+
+	void DoBulletMotion()
+	{
+
 	}
 }

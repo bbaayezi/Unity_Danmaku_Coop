@@ -12,10 +12,9 @@ public class EnemyBulletController : MonoBehaviour
     // public GameObject Enemy;
     // public GameObject BulletSpawnPoint;
     // public GameObject BulletPrefab;
-    public BulletMotionCfg BMCfg;
+    public BulletSpawnCfg BSCfg;
     private Vector3 ScreenBorder;
     private int FrameCount;
-    private int DefaultFrameCount = 30;
     private int TotalSpawn = 0;
     private GameObject BulletMgr;
 	// Use this for initialization
@@ -41,43 +40,52 @@ public class EnemyBulletController : MonoBehaviour
 
     void SpawnBullet()
     {
-        if (FrameCount == BMCfg.TotalSpawn[0].StartSpawnTime)
+        if (FrameCount == BSCfg.TotalSpawn[TotalSpawn].StartSpawnTime)
         {
-            // Debug.Log(TotalSpawn);
             FrameCount = 0;
-            // Debug.Log(TotalSpawn);
-            if (TotalSpawn < BMCfg.TotalSpawn.Length)
+            if (TotalSpawn < BSCfg.TotalSpawn.Length)
             {
                 // spawn point set to enemy
-                if (BMCfg.TotalSpawn[TotalSpawn].SpawnPoint.Capacity == 0)
+                if (BSCfg.TotalSpawn[TotalSpawn].SpawnPoint.Capacity == 0)
                 {
-                    foreach(Vector3 rotation in BMCfg.TotalSpawn[TotalSpawn].Rotation)
+                    foreach(Vector3 rotation in BSCfg.TotalSpawn[TotalSpawn].Rotation)
                     {
-                        Instantiate(BMCfg.TotalSpawn[TotalSpawn].Appearence,
+                        GameObject obj = Instantiate(BSCfg.TotalSpawn[TotalSpawn].Appearence,
                         transform.position,
                         Quaternion.Euler(rotation),
                         BulletMgr.transform);
+                        BulletMotionController ctrlr = obj.GetComponent<BulletMotionController>();
+                        ctrlr.HorVelocityTimeCurve = 
+                        BSCfg.TotalSpawn[TotalSpawn].HorVelocityTimeCurve;
+                        ctrlr.VerVelocityTimeCurve = 
+                        BSCfg.TotalSpawn[TotalSpawn].VerVelocityTimeCurve;
                     }
                 }
                 else
                 {
-                    foreach(Vector3 rotation in BMCfg.TotalSpawn[TotalSpawn].Rotation)
+                    foreach(Vector3 rotation in BSCfg.TotalSpawn[TotalSpawn].Rotation)
                     {
-                        Instantiate(BMCfg.TotalSpawn[TotalSpawn].Appearence,
-                        transform.position + BMCfg.TotalSpawn[TotalSpawn].SpawnPoint[0],
+                        GameObject obj = Instantiate(BSCfg.TotalSpawn[TotalSpawn].Appearence,
+                        transform.position + BSCfg.TotalSpawn[TotalSpawn].SpawnPoint[0],
                         Quaternion.Euler(rotation),
                         BulletMgr.transform);
+                        BulletMotionController ctrlr = obj.GetComponent<BulletMotionController>();
+                        ctrlr.HorVelocityTimeCurve = 
+                        BSCfg.TotalSpawn[TotalSpawn].HorVelocityTimeCurve;
+                        ctrlr.VerVelocityTimeCurve = 
+                        BSCfg.TotalSpawn[TotalSpawn].VerVelocityTimeCurve;
                     }
                 }
-                DefaultFrameCount = BMCfg.TotalSpawn[TotalSpawn].StartSpawnTime;
-            }
-            else if (BMCfg.RepeatProcedure && TotalSpawn == BMCfg.TotalSpawn.Length)
-            {
-                // reset the spawn time    
-                TotalSpawn = -1;
-                FrameCount = DefaultFrameCount - 1;
+                
+                if (BSCfg.RepeatProcedure && TotalSpawn == BSCfg.TotalSpawn.Length - 1)
+                {
+                    // reset the spawn time    
+                    TotalSpawn = -1;
+                   
+                }
             }
             TotalSpawn++;
+            
         }
         FrameCount++;
     }

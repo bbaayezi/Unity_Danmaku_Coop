@@ -14,10 +14,7 @@ public class Enemy : MonoBehaviour
     // public GameObject[] Bullets;
     private int frameCount;
     private int life = 30;
-    public delegate void EnemyDestroyEvent(Transform trans);
-    public static EnemyDestroyEvent OnDestroy;
     public GameObject ParticleSys;
-    private ParticleSystem Ps;
 
 	// Use this for initialization
 	void Start () 
