@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject Wingman;
 	public GameObject Bullet;
 	private Animator anim;
+	private InputHandler inputHandler;
 	
 	// Use this for initialization
 	void Start () 
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
 			transform.position + new Vector3(0.18f, -0.22f, 0));
 		}
 		anim = GetComponent<Animator>();
+		inputHandler = new InputHandler();
 	}
 	
 	// Update is called once per frame
@@ -54,6 +56,12 @@ public class PlayerController : MonoBehaviour
 				transform.position + new Vector3(0.2f, 0.008f, 0));
 			}
 		}
+
+		// test for new code
+		// InputHandler inputHandler = new InputHandler();
+		Command command = inputHandler.HandleInput();
+		command?.Execute<PlayerCommandHandler>(gameObject);
+		//
 	}
 
 	void Move()
